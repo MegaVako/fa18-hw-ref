@@ -13,8 +13,20 @@ most_common_char
 Given an input string s, return the most common character in s.
 """
 def most_common_char(s):
-	pass
-
+    if s == "":
+        return None
+    else:
+        toCharDict = dict.fromkeys(s,0)
+        for c in list(s):
+            toCharDict[c] += 1
+        largest = 0
+        currentChar = 'a'
+        for c, num in toCharDict.items():
+            if largest < num:
+                currentChar = c
+                largest = num
+        return currentChar         
+#print(most_common_char("aaabbbbbbbbbbeeedddferwerwerqweasdwaweadwrttttt"))
 
 """
 alphabet_finder
