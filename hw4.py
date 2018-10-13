@@ -68,8 +68,38 @@ Example:
 		[1, 6]
 """
 def longest_unique_subarray(arr):
-	pass
+    currentIndex = 0
+    currentArr = arr
+    currentLength = len(arr)
+    while(not checkUniqueArr(currentArr.copy())):
+        if (currentIndex + currentLength) == len(arr):
+            currentIndex = 0
+            currentLength -= 1
+        else:
+            currentIndex += 1
+        currentArr = arr[currentIndex: currentIndex + currentLength]
+        #print(currentArr)
+        #print(arr)
+        #print("currentIndex = ", currentIndex)
+        #print("currentLength = ", currentLength)
+    return [currentIndex, currentLength]
 
+def checkUniqueArr(Array):
+    Array.sort()
+    for n in range (1, len(Array)) :
+        if Array[n] == Array[n - 1]:
+            return False
+    return True
+
+#import random
+#arrNLE = []
+#for i in range (1,1000):
+#    arrNLE.append(random.randint(1,10))
+#    arrNLE.append(i)
+#print (longest_unique_subarray(arrNLE))
+#print(list(range(10)))
+#print (longest_unique_subarray(list(range(10))))
+#print(checkUniqueArr([1, 2, 3, 1, 2, 5, 1]))
 
 """
 string_my_one_true_love
